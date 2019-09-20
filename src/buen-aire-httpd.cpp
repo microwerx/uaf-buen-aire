@@ -8,22 +8,26 @@ class BuenAireHttpd
 
 		void run();
 	private:
-		zctx_t *ctx = nullptr;
-		void *stream = nullptr;
+		zsock_t *stream = nullptr;
 };
 
 BuenAireHttpd::BuenAireHttpd() {
-	ctx = zctx_new();
-	stream = zsocket_new(ctx, ZMQ_STREAM);
-	int rc = zsocket_bind(stream, "tcp://*:8080");
-	assert(rc != -1);
-	if (rc != -1) {
+	stream = zsock_new_stream(NULL);
+	if (!stream) {
+		fprintf(stderr, "Unable to create new stream socket\n");
+	}
+	int rc = zsock_bind(stream, "tcp://*:8080");
+	if (rc == -1) {
+		fprintf(stderr, "Unable to bind new stream socket\n");
+		zsock_destroy(&stream);
 		stream = nullptr;
 	}
 }
 
-BuenAireHttpd::~BuenAireHttp() {
-	zctx_destroy(&ctx);
+BuenAireHttpd::~BuenAireHttpd() {
+	if (stream) {
+		zsock_destroy(&stream);
+	}
 }
 
 void BuenAireHttpd::run() {
@@ -40,12 +44,13 @@ void BuenAireHttpd::run() {
 		zframe_send(&handle, stream, ZFRAME_MORE + ZFRAME_REUSE);
 		zstr_send(stream,
 				"HTTP/1.0 200 OK\r\n"
-				"Content-Type: text/plain\r\n"
+				"Content-Type: text/html\r\n"
 				"\r\n"
-				"Hello, World!");
+				"<html><body>Hello, World!</body></html>");
 
 		zframe_send(&handle, stream, ZFRAME_MORE);
 		zmq_send(stream, NULL, 0, 0);
+		puts("done");
 	}
 }
 

@@ -5,7 +5,7 @@ OBJECTS = $(SOURCES:%.cpp=%.o)
 
 CXXFLAGS = -g -Wall -std=c++14
 CXX = g++
-LDFLAGS = -lzmq3
+LDFLAGS = -lczmq -lzmq
 
 .PHONY: all clean
 
