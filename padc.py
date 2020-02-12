@@ -1,3 +1,4 @@
+from urllib.error import HTTPError
 import numpy as np
 import urllib.request
 import json
@@ -6,7 +7,6 @@ import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 
 EXTENTS = [-172, -128, 40, 90]
-
 
 class PADataPoint:
     # sensor A data fields
@@ -58,7 +58,7 @@ class PADataPoint:
 
     def good(self):
         return self.lon != None and self.lat != None
-
+    
     def __str__(self):
         return str(self.id) + ' ' + str(self.lat) + ' ' + str(self.lon) + ' ' + str(self.pm)
 
@@ -76,10 +76,10 @@ class PAData:
             response = urllib.request.urlopen(url)
         except HTTPError as e:
             print('Error code: ', e.code)
-            return
-        http_data = response.read()
-        json_data = json.loads(http_data)
-        self.process(json_data)
+        else:
+            http_data = response.read()
+            json_data = json.loads(http_data)
+            self.process(json_data)
 
     def process(self, data):
         self.version = data.get('version')
@@ -97,17 +97,17 @@ class PAData:
                 continue
             self.dataPoints.append(dp)
             fout.write(str(dp) + '\n')
-        fout.close()
+        fout.close()            
         print("Added " + str(len(self.dataPoints)) + " data points")
-
+    
     def plot(self, plt, style):
         for d in self.dataPoints:
             d.plot(plt, style)
 
-
+            
 def plotAlaska():
     ax = plt.axes(projection=ccrs.PlateCarree())
-    # ax = plt.axes(projection=ccrs.Orthographic(-153.369141, 66.160507))
+    #ax = plt.axes(projection=ccrs.Orthographic(-153.369141, 66.160507))
     ax.set_extent([-172, -128, 40, 90])
     ax.coastlines()
     ax.stock_img()
@@ -122,7 +122,7 @@ def plotAlaska():
     ax.add_feature(cfeature.LAND)
     ax.add_feature(cfeature.COASTLINE)
     ax.add_feature(states_provinces, edgecolor='gray')
-
+    
 
 pad = PAData('https://www.purpleair.com/data.json')
 
