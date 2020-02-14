@@ -4,7 +4,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 
 namespace buenaire
 {
@@ -16,6 +18,21 @@ namespace buenaire
         public MainPage()
         {
             InitializeComponent();
+        }
+
+        private void map_Clicked(object sender, EventArgs e)
+        {
+            Map map = new Map(MapSpan.FromCenterAndRadius(new Position(64.83, -147.71), Distance.FromMiles(10)));
+
+            Pin pin = new Pin()
+            {
+                Position = new Position(64.83, -147.71),
+                Label = "Fairbanks!"
+            };
+
+            map.Pins.Add(pin);
+
+            Content = map;
         }
     }
 }

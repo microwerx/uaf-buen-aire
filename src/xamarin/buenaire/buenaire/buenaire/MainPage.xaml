@@ -8,9 +8,15 @@
 
     <StackLayout>
         <!-- Place new controls here -->
-        <Label Text="Welcome to Buen Aire!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        <Label TextColor="#007fff"
+               FontSize="Title"
+               Text="Welcome to Buen Aire!"
+               HorizontalOptions="Center"
+               VerticalOptions="CenterAndExpand" />
+        <Button x:Name="map"
+                Text="Map"
+                Clicked="map_Clicked" />
+
     </StackLayout>
 
 </ContentPage>
