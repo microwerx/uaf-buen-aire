@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
@@ -12,9 +13,13 @@ namespace BuenAireSvc
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            IWebHost webHost = CreateWebHostBuilder(args).Build();
+
+            JobScheduler.Start();
+
+            await webHost.RunAsync();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
