@@ -1,22 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="buenaire.MainPage">
+             x:Class="buenaire.MainPage"
+             xmlns:local="clr-namespace:buenaire;assembly=buenaire">
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label TextColor="#007fff"
-               FontSize="Title"
-               Text="Welcome to Buen Aire!"
-               HorizontalOptions="Center"
-               VerticalOptions="CenterAndExpand" />
-        <Button x:Name="map"
-                Text="Map"
-                Clicked="map_Clicked" />
+    <MasterDetailPage.Master>
+        <local:MasterPage x:Name="masterPage"/>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <local:DefaultMapPage/>
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
 
-    </StackLayout>
-
-</ContentPage>
+</MasterDetailPage>
