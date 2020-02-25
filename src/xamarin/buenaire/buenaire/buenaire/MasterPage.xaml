@@ -9,10 +9,31 @@
              Title="Buen Aire"
              Padding="0,40,0,0">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Master Page"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ListView x:Name="listView" x:FieldModifier="public">
+            <ListView.ItemsSource>
+                <x:Array Type="{x:Type local:MasterPageItem}">
+                    <local:MasterPageItem Title="Default Map" TargetType="{x:Type local:DefaultMapPage}"/>
+                    <local:MasterPageItem Title="UAF Smoke Map" TargetType="{x:Type local:UAFSmokePage}"/>
+                    <local:MasterPageItem Title="Purple Air Map" TargetType="{x:Type local:PurpleAirPage}"/>
+                </x:Array>
+            </ListView.ItemsSource>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="5,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding IconSource}"/>
+                            <Label Grid.Column="1" 
+                                   Text="{Binding Title}"
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>
