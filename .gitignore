@@ -132,3 +132,7 @@ dmypy.json
 
 # pytype static type analyzer
 .pytype/
+
+# VS files
+.vs/
+/src/xamarin/buenaire/buenaire
