@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
+    <Folder Include="Data\Feeds\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
