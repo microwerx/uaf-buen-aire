@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuenAireSvc", "BuenAireSvc.csproj", "{8249143E-075D-4383-B415-3F46A8F4FC81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuenAireSvcTests", "..\BuenAireSvcTests\BuenAireSvcTests.csproj", "{E7E67A0E-381E-48F4-8423-9F869A7C832D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuenAireSvcTests", "..\BuenAireSvcTests\BuenAireSvcTests.csproj", "{E7E67A0E-381E-48F4-8423-9F869A7C832D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\BuenAireSvc"
+    "\\BuenAireSvc",
+    "\\src\\xamarin",
+    "\\src\\xamarin\\buenaire"
   ],
   "SelectedNode": "\\BuenAireSvc\\BuenAireSvc.sln",
   "PreviewInSolutionExplorer": false

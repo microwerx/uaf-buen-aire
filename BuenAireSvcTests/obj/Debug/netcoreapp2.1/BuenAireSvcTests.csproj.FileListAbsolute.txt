@@ -18,3 +18,4 @@ C:\Users\Mark\Source\Repos\uaf-buen-aire\BuenAireSvcTests\obj\Debug\netcoreapp2.
 C:\Users\Mark\Source\Repos\uaf-buen-aire\BuenAireSvcTests\obj\Debug\netcoreapp2.1\BuenAireSvcTests.dll
 C:\Users\Mark\Source\Repos\uaf-buen-aire\BuenAireSvcTests\obj\Debug\netcoreapp2.1\BuenAireSvcTests.pdb
 C:\Users\Mark\Source\Repos\uaf-buen-aire\BuenAireSvcTests\bin\Debug\netcoreapp2.1\Data\purpleair_sensors.json
+C:\Users\Mark\Source\Repos\uaf-buen-aire\BuenAireSvcTests\bin\Debug\netcoreapp2.1\Data\alaska_sensors.json
