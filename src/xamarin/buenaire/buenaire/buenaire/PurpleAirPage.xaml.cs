@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Xamarin.Forms.Maps;
+using Xamarin.Forms.GoogleMaps;
 
 namespace buenaire
 {
@@ -15,71 +15,65 @@ namespace buenaire
     {
         public PurpleAirPage()
         {
-            InitializeComponent();
+            Map map = new Map();
 
-            Map map = new Map(MapSpan.FromCenterAndRadius(new Position(64.83, -147.71), Distance.FromMiles(10)));
+            map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(64.83d, -147.71d), Distance.FromMeters(10000)), false);
 
-            Polygon polygon1 = new Polygon()
+            var circle1 = new Circle();
+            circle1.Center = new Position(64.87d, -147.62d);
+            circle1.Radius = Distance.FromMeters(3000f);
+            circle1.StrokeColor = Color.Blue;
+            circle1.StrokeWidth = 6f;
+            circle1.FillColor = Color.FromRgba(137, 196, 244, 96);
+            Pin pin1 = new Pin()
             {
-                StrokeWidth = 25,
-                StrokeColor = Color.FromHex("#1BA1E2"),
-                FillColor = Color.FromHex("#881BA1E2"),
-                Geopath =
-                        {
-                            new Position(64.80, -147.71),
-                            new Position(64.78, -147.69),
-                            new Position(64.76, -147.71),
-                            new Position(64.78, -147.73)
-                        }
+                Position = new Position(64.87d, -147.62d),
+                Label = "15"
             };
+            map.Pins.Add(pin1);
+            map.Circles.Add(circle1);
 
-            Polygon polygon2 = new Polygon()
+            var circle2 = new Circle();
+            circle2.Center = new Position(64.87d, -147.81d);
+            circle2.Radius = Distance.FromMeters(3000f);
+            circle2.StrokeColor = Color.Purple;
+            circle2.StrokeWidth = 6f;
+            circle2.FillColor = Color.FromRgba(0, 0, 255, 32);
+            Pin pin2 = new Pin()
             {
-                StrokeWidth = 25,
-                StrokeColor = Color.DarkRed,
-                FillColor = Color.Red,
-                Geopath =
-                        {
-                            new Position(64.90, -147.71),
-                            new Position(64.88, -147.69),
-                            new Position(64.86, -147.71),
-                            new Position(64.88, -147.73)
-                        }
+                Position = new Position(64.87d, -147.81d),
+                Label = "55"
             };
+            map.Pins.Add(pin2);
+            map.Circles.Add(circle2);
 
-            Polygon polygon3 = new Polygon()
+            var circle3 = new Circle();
+            circle3.Center = new Position(64.81d, -147.62d);
+            circle3.Radius = Distance.FromMeters(3000f);
+            circle3.StrokeColor = Color.Red;
+            circle3.StrokeWidth = 6f;
+            circle3.FillColor = Color.FromRgba(240, 52, 52, 32);
+            Pin pin3 = new Pin()
             {
-                StrokeWidth = 25,
-                StrokeColor = Color.DarkOrange,
-                FillColor = Color.Orange,
-                Geopath =
-                        {
-                            new Position(64.85, -147.76),
-                            new Position(64.83, -147.74),
-                            new Position(64.81, -147.76),
-                            new Position(64.83, -147.78)
-                        }
+                Position = new Position(64.81d, -147.62d),
+                Label = "155"
             };
+            map.Pins.Add(pin3);
+            map.Circles.Add(circle3);
 
-            Polygon polygon4 = new Polygon()
+            var circle4 = new Circle();
+            circle4.Center = new Position(64.81d, -147.81d);
+            circle4.Radius = Distance.FromMeters(3000f);
+            circle4.StrokeColor = Color.Yellow;
+            circle4.StrokeWidth = 6f;
+            circle4.FillColor = Color.FromRgba(255, 255, 126, 96);
+            Pin pin4 = new Pin()
             {
-                StrokeWidth = 25,
-                StrokeColor = Color.Yellow,
-                FillColor = Color.LightYellow,
-                Geopath =
-                        {
-                            new Position(64.85, -147.66),
-                            new Position(64.83, -147.64),
-                            new Position(64.81, -147.66),
-                            new Position(64.83, -147.68)
-                        }
+                Position = new Position(64.81d, -147.81d),
+                Label = "1"
             };
-
-            // add the polygon to the map's MapElements collection
-            map.MapElements.Add(polygon1);
-            map.MapElements.Add(polygon2);
-            map.MapElements.Add(polygon3);
-            map.MapElements.Add(polygon4);
+            map.Pins.Add(pin4);
+            map.Circles.Add(circle4);
 
             Content = map;
         }
