@@ -1,8 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.IO;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace BuenAireSvc.Controllers
 {
@@ -12,16 +15,23 @@ namespace BuenAireSvc.Controllers
     {
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return System.IO.File.ReadAllText(@".\Data\alaska_sensors.json");
         }
 
         // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        [HttpGet("{lat}/{lon}")]
+        public ActionResult<string> Get(double lat, double lon)
         {
-            return "value";
+            string file = System.IO.File.ReadAllText(@".\Data\alaska_sensors.json");
+            JArray array = JArray.Parse(file);
+
+            var result = from sensor in array
+                         where Convert.ToDouble(sensor["Lat"]) > lat && Convert.ToDouble(sensor["Lon"]) < lon
+                         select sensor.ToString();
+
+            return "[" + string.Join(",", result.ToArray()) + "]";
         }
 
         // POST api/values
