@@ -136,3 +136,4 @@ dmypy.json
 # VS files
 .vs/
 /src/xamarin/buenaire/buenaire
+BuenAireSvcTests/
