@@ -20,10 +20,6 @@ namespace BuenAireSvc
             JobScheduler.Start();
 
             await webHost.RunAsync();
-
-            MachineLearningModel machineLearning = new MachineLearningModel();
-
-            await machineLearning.IngestData();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
