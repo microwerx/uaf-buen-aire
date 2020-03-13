@@ -20,15 +20,16 @@ namespace BuenAireSvc.Controllers
             return System.IO.File.ReadAllText(@".\Data\alaska_sensors.json");
         }
 
-        // GET api/values/5
-        [HttpGet("{lat}/{lon}")]
-        public ActionResult<string> Get(double lat, double lon)
+        // GET bounding box from SW corner and NE corner
+        [HttpGet("{latSw}/{lonSw}/{latNe}/{lonNe}")]
+        public ActionResult<string> Get(double latSw, double lonSw, double latNe, double lonNe)
         {
             string file = System.IO.File.ReadAllText(@".\Data\alaska_sensors.json");
             JArray array = JArray.Parse(file);
 
             var result = from sensor in array
-                         where Convert.ToDouble(sensor["Lat"]) > lat && Convert.ToDouble(sensor["Lon"]) < lon
+                         where Convert.ToDouble(sensor["Lat"]) >= latSw && Convert.ToDouble(sensor["Lon"]) >= lonSw
+                                && Convert.ToDouble(sensor["Lat"]) <= latNe && Convert.ToDouble(sensor["Lon"]) <= lonNe
                          select sensor.ToString();
 
             return "[" + string.Join(",", result.ToArray()) + "]";
