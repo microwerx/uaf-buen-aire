@@ -28,8 +28,10 @@ namespace buenaire
             Pin pin1 = new Pin()
             {
                 Position = new Position(64.87d, -147.62d),
-                Label = "15"
-            };
+                Label = "15",
+                //Icon = BitmapDescriptorFactory.FromView(new ContentView { HeightRequest = 50, WidthRequest = 50, Content = new Image { Source = ImageSource.FromFile("@drawable/0_50.png") } })
+                Icon = BitmapDescriptorFactory.FromBundle("0_50")
+                };
             map.Pins.Add(pin1);
             map.Circles.Add(circle1);
 
@@ -42,7 +44,8 @@ namespace buenaire
             Pin pin2 = new Pin()
             {
                 Position = new Position(64.87d, -147.81d),
-                Label = "55"
+                Label = "55",
+                Icon = BitmapDescriptorFactory.FromBundle("purpleair")
             };
             map.Pins.Add(pin2);
             map.Circles.Add(circle2);
