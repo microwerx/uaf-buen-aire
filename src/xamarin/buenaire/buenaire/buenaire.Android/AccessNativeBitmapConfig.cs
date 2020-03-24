@@ -12,11 +12,11 @@ using namespace buenaire
           int resId = 0;
           switch (descriptor.Id)
           {
-              case "0_50":
-                  resId = Resource.Drawable.type2;
+              case "Fifty":
+                  resId = Resource.Drawable.Fifty;
                   break;
               case "purpleair":
-                  resId = Resource.Drawable.type1;
+                  resId = Resource.Drawable.purpleair;
                   break;
           }
 

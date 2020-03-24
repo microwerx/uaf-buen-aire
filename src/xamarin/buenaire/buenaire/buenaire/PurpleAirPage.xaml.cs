@@ -30,7 +30,7 @@ namespace buenaire
                 Position = new Position(64.87d, -147.62d),
                 Label = "15",
                 //Icon = BitmapDescriptorFactory.FromView(new ContentView { HeightRequest = 50, WidthRequest = 50, Content = new Image { Source = ImageSource.FromFile("@drawable/0_50.png") } })
-                Icon = BitmapDescriptorFactory.FromBundle("0_50")
+                Icon = BitmapDescriptorFactory.FromBundle("Fifty")
                 };
             map.Pins.Add(pin1);
             map.Circles.Add(circle1);
