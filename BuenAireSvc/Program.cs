@@ -13,13 +13,11 @@ namespace BuenAireSvc
 {
     public class Program
     {
-        public static async Task Main(string[] args)
+        public static void Main(string[] args)
         {
-            IWebHost webHost = CreateWebHostBuilder(args).Build();
-
             JobScheduler.Start();
 
-            await webHost.RunAsync();
+            CreateWebHostBuilder(args).Build().Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
