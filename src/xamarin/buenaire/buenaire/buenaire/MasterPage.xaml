@@ -16,6 +16,7 @@
                     <local:MasterPageItem Title="Default Map" TargetType="{x:Type local:DefaultMapPage}"/>
                     <local:MasterPageItem Title="UAF Smoke Map" IconSource="@drawable/uafsmoke.png" TargetType="{x:Type local:UAFSmokePage}"/>
                     <local:MasterPageItem Title="Purple Air Map" IconSource="@drawable/purpleair.png" TargetType="{x:Type local:PurpleAirPage}"/>
+                    <local:MasterPageItem Title="About" IconSource="@drawable/about.png" TargetType="{x:Type local:AboutPage}"/>
                 </x:Array>
             </ListView.ItemsSource>
             <ListView.ItemTemplate>

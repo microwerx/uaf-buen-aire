@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="buenaire.AboutPage"
+             Title="About">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="About Buen Aire"
+                   FontSize="Title"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"/>
+            <Label HorizontalOptions="Start">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="    More about "/>
+                        <Span Text="UAF Smoke"
+                              TextColor="Blue"
+                              TextDecorations="Underline">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding TapCommand}"
+                                                      CommandParameter="http://smoke.alaska.edu"
+                                                      NumberOfTapsRequired="1"/>
+                            </Span.GestureRecognizers>
+                        </Span>
+                        <Span Text=" (external link)." />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label HorizontalOptions="Start">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="    More about "/>
+                        <Span Text="PurpleAir"
+                              TextColor="Blue"
+                              TextDecorations="Underline">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding TapCommand}"
+                                                      CommandParameter="https://www2.purpleair.com"
+                                                      NumberOfTapsRequired="1"/>
+                            </Span.GestureRecognizers>
+                        </Span>
+                        <Span Text=" (external link)." />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
