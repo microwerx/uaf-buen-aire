@@ -14,7 +14,7 @@ namespace buenaire
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AboutPage : ContentPage
     {
-        public ICommand TapCommand => new Command<string>(async (url) => await Launcher.OpenAsync(url));
+        public ICommand TapCommand => new Command<string>(async (url) => await Browser.OpenAsync(url, BrowserLaunchMode.SystemPreferred));
         public AboutPage()
         {
             InitializeComponent();
