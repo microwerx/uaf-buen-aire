@@ -15,6 +15,23 @@
             <Label HorizontalOptions="Start">
                 <Label.FormattedText>
                     <FormattedString>
+                        <Span Text="    Source code and more about "/>
+                        <Span Text="Buen Aire"
+                              TextColor="Blue"
+                              TextDecorations="Underline">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding TapCommand}"
+                                                      CommandParameter="https://github.com/microwerx/uaf-buen-aire"
+                                                      NumberOfTapsRequired="1"/>
+                            </Span.GestureRecognizers>
+                        </Span>
+                        <Span Text=" (external link)." />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label HorizontalOptions="Start">
+                <Label.FormattedText>
+                    <FormattedString>
                         <Span Text="    More about "/>
                         <Span Text="UAF Smoke"
                               TextColor="Blue"
