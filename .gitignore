@@ -384,3 +384,4 @@ MigrationBackup/
 *.exe
 *.out
 *.app
+/BuenAireSvcTests/Controllers/PurpleAirControllerTests.cs

@@ -7,12 +7,16 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms.GoogleMaps;
+using System.Net.Http;
+using Newtonsoft.Json.Linq;
 
 namespace buenaire
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PurpleAirPage : ContentPage
     {
+        private static HttpClient client = new HttpClient();
+
         public PurpleAirPage()
         {
             Map map = new Map();
@@ -78,6 +82,25 @@ namespace buenaire
             map.Pins.Add(pin4);
             map.Circles.Add(circle4);
 
+            map.CameraIdled += async (sender, args) =>
+            {
+                string response = await client.GetStringAsync("https://uafbuenaire.azurewebsites.net/api/purpleair/" + map.Region.NearLeft.Latitude +
+                    "/" + map.Region.NearLeft.Longitude + "/" + map.Region.FarRight.Latitude + "/" + map.Region.FarRight.Longitude);
+
+                JArray json = JArray.Parse(response);
+
+                map.Pins.Clear();
+                foreach (JObject sensor in json)
+                {
+                    if (!sensor.ContainsKey("ParentID"))
+                    {
+                        double lat = sensor.Value<double>("Lat");
+                        double lon = sensor.Value<double>("Lon");
+                        map.Pins.Add(new Pin() { Position = new Position(lat, lon), Label = sensor.Value<string>("Label") });
+                    }
+                }
+            };
+            
             Content = map;
         }
     }
