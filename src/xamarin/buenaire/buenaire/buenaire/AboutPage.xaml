@@ -1,68 +1,113 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              mc:Ignorable="d"
              x:Class="buenaire.AboutPage"
              Title="About">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="About Buen Aire"
-                   FontSize="Title"
-                   HorizontalOptions="Center"
-                   FontAttributes="Bold"/>
-            <Label HorizontalOptions="Start">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="    Source code and more about "/>
-                        <Span Text="Buen Aire"
-                              TextColor="Blue"
-                              TextDecorations="Underline">
-                            <Span.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding TapCommand}"
-                                                      CommandParameter="https://github.com/microwerx/uaf-buen-aire"
-                                                      NumberOfTapsRequired="1"/>
-                            </Span.GestureRecognizers>
-                        </Span>
-                        <Span Text=" (external link)." />
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
-            <Label HorizontalOptions="Start">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="    More about "/>
-                        <Span Text="UAF Smoke"
-                              TextColor="Blue"
-                              TextDecorations="Underline">
-                            <Span.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding TapCommand}"
-                                                      CommandParameter="http://smoke.alaska.edu"
-                                                      NumberOfTapsRequired="1"/>
-                            </Span.GestureRecognizers>
-                        </Span>
-                        <Span Text=" (external link)." />
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
-            <Label HorizontalOptions="Start">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="    More about "/>
-                        <Span Text="PurpleAir"
-                              TextColor="Blue"
-                              TextDecorations="Underline">
-                            <Span.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding TapCommand}"
-                                                      CommandParameter="https://www2.purpleair.com"
-                                                      NumberOfTapsRequired="1"/>
-                            </Span.GestureRecognizers>
-                        </Span>
-                        <Span Text=" (external link)." />
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Padding="20">
+
+                <!-- Buen Aire Descriptions -->
+
+                <Label Text="About Buen Aire"
+                       FontSize="Title"
+                       HorizontalOptions="Center"
+                       FontAttributes="Bold"/>
+                <Label Text="Buen Aire is an air quality prediction and real-time air quality monitoring tool. This tool utilizes data from UAF Smoke and Purple air to produce convenient air quality maps for scientists, researchers, and the general public."
+                       HorizontalOptions="Start"
+                       FontSize="Medium"
+                       LineBreakMode="WordWrap"/>
+                <Label HorizontalOptions="Start">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="    Source code and more about "/>
+                            <Span Text="Buen Aire"
+                                  TextColor="Blue"
+                                  TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TapCommand}"
+                                                          CommandParameter="https://github.com/microwerx/uaf-buen-aire"
+                                                          NumberOfTapsRequired="1"/>
+                                </Span.GestureRecognizers>
+                            </Span>
+                            <Span Text=" (external link)." />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            
+                <!-- UAF Smoke Descriptions -->
+
+                <Label Text="About UAF Smoke"
+                       FontSize="Title"
+                       HorizontalOptions="Center"
+                       FontAttributes="Bold"/>
+                <Label HorizontalOptions="Start"
+                       FontSize="Medium"
+                       LineBreakMode="WordWrap">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="From smoke.alaska.edu: "
+                                  FontAttributes="Italic"/>
+                            <Span Text="&#10;The Weather Research and Forecasting model with inline Chemistry and fire plume rise dynamics (WRF/Chem) is used as core model to forecast the atmospheric dispersion of smoke downstream from Alaska wildfires. Forecasts for up to 72 hours are updated daily with current fire and weather information.&#10;&#10;UAFSMOKE is an initiative supported by the Alaska Climate Research Center at the Geophysical Institute of the University of Alaska Fairbanks in cooperation with colleagues from NOAA's Global System Division, Brazil's Center for Weather Forecasting and Climate Studies(CPTEC/INPE), and the USFS Missoula Fire Sciences Lab."/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label HorizontalOptions="Start">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="    More about "/>
+                            <Span Text="UAF Smoke"
+                                  TextColor="Blue"
+                                  TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TapCommand}"
+                                                          CommandParameter="http://smoke.alaska.edu"
+                                                          NumberOfTapsRequired="1"/>
+                                </Span.GestureRecognizers>
+                            </Span>
+                            <Span Text=" (external link)." />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            
+                <!-- PurpleAir Descriptions -->
+
+                <Label Text="About PurpleAir"
+                       FontSize="Title"
+                       HorizontalOptions="Center"
+                       FontAttributes="Bold"/>
+                <Label HorizontalOptions="Start"
+                       FontSize="Medium"
+                       LineBreakMode="WordWrap">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="From purpleair.com: "
+                                  FontAttributes="Italic"/>
+                            <Span Text="&#10;PurpleAir sensors that can be purchased by anyone around the world are 'internet-of-things' devices that measure airborne particulate matter (PM). Data from devices placed around the world can be accessed by the public."/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label HorizontalOptions="Start">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="    More about "/>
+                            <Span Text="PurpleAir"
+                                  TextColor="Blue"
+                                  TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TapCommand}"
+                                                          CommandParameter="https://www2.purpleair.com"
+                                                          NumberOfTapsRequired="1"/>
+                                </Span.GestureRecognizers>
+                            </Span>
+                            <Span Text=" (external link)." />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
