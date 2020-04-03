@@ -96,7 +96,7 @@ namespace buenaire
                     {
                         double lat = sensor.Value<double>("Lat");
                         double lon = sensor.Value<double>("Lon");
-                        map.Pins.Add(new Pin() { Position = new Position(lat, lon), Label = sensor.Value<string>("Label") });
+                        map.Pins.Add(new Pin() { Position = new Position(lat, lon), Label = sensor.Value<string>("Label") + "PM 2.5: " + sensor.Value<string>("PM2_5Value") + " ug/m^3" });
                     }
                 }
             };
