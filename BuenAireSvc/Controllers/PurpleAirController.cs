@@ -20,21 +20,6 @@ namespace BuenAireSvc.Controllers
             return System.IO.File.ReadAllText(@".\Data\alaska_sensors.json");
         }
 
-        /*// GET bounding box from SW corner and NE corner
-        [HttpGet("{latSw}/{lonSw}/{latNe}/{lonNe}")]
-        public ActionResult<string> Get(double latSw, double lonSw, double latNe, double lonNe)
-        {
-            string file = System.IO.File.ReadAllText(@".\Data\alaska_sensors.json");
-            JArray array = JArray.Parse(file);
-
-            var result = from sensor in array
-                         where Convert.ToDouble(sensor["Lat"]) >= latSw && Convert.ToDouble(sensor["Lon"]) >= lonSw
-                                && Convert.ToDouble(sensor["Lat"]) <= latNe && Convert.ToDouble(sensor["Lon"]) <= lonNe
-                         select sensor.ToString();
-
-            return "[" + string.Join(",", result.ToArray()) + "]";
-        }*/
-
         [HttpGet("{what}/{latSw}/{lonSw}/{latNe}/{lonNe}")]
         public ActionResult<string> Get(string what, double latSw, double lonSw, double latNe, double lonNe)
         {
@@ -42,15 +27,15 @@ namespace BuenAireSvc.Controllers
             JArray array = JArray.Parse(file);
 
             string result = "";
-            if (what == "locations")
+            if (what == "simple")
             {
-                var locations = from sensor in array
+                var simple = from sensor in array
                              where Convert.ToDouble(sensor["Lat"]) >= latSw && Convert.ToDouble(sensor["Lon"]) >= lonSw
                                     && Convert.ToDouble(sensor["Lat"]) <= latNe && Convert.ToDouble(sensor["Lon"]) <= lonNe
                                     && sensor.Value<string>("ParentID") == null
-                             select new { Label = sensor["Label"], Lat = sensor["Lat"], Lon = sensor["Lon"] };
+                             select new { Label = sensor["Label"], Lat = sensor["Lat"], Lon = sensor["Lon"], PM2_5 = sensor["PM2_5Value"] };
 
-                result = JsonConvert.SerializeObject(locations);
+                result = JsonConvert.SerializeObject(simple);
             }
             else if (what == "all")
             {
