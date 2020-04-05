@@ -84,19 +84,22 @@ namespace buenaire
 
             map.CameraIdled += async (sender, args) =>
             {
-                string response = await client.GetStringAsync("https://uafbuenaire.azurewebsites.net/api/purpleair/" + map.Region.NearLeft.Latitude +
+                string response = await client.GetStringAsync("https://uafbuenaire.azurewebsites.net/api/purpleair/locations/" + map.Region.NearLeft.Latitude +
                     "/" + map.Region.NearLeft.Longitude + "/" + map.Region.FarRight.Latitude + "/" + map.Region.FarRight.Longitude);
 
                 JArray json = JArray.Parse(response);
 
-                map.Pins.Clear();
                 foreach (JObject sensor in json)
                 {
                     if (!sensor.ContainsKey("ParentID"))
                     {
                         double lat = sensor.Value<double>("Lat");
                         double lon = sensor.Value<double>("Lon");
-                        map.Pins.Add(new Pin() { Position = new Position(lat, lon), Label = sensor.Value<string>("Label") + "PM 2.5: " + sensor.Value<string>("PM2_5Value") + " ug/m^3" });
+                        Pin pin = new Pin() { Position = new Position(lat, lon), Label = sensor.Value<string>("Label")};
+                        if (!map.Pins.Contains(pin))
+                        {
+                            map.Pins.Add(pin);
+                        }
                     }
                 }
             };
