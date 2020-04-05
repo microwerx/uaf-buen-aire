@@ -22,7 +22,7 @@ namespace BuenAireSvc
             ITrigger trigger = TriggerBuilder.Create()
                 .WithDailyTimeIntervalSchedule
                   (s =>
-                     s.WithIntervalInHours(24)
+                     s.WithIntervalInMinutes(5)
                     .OnEveryDay()
                     .StartingDailyAt(TimeOfDay.HourAndMinuteOfDay(0, 0))
                   )
