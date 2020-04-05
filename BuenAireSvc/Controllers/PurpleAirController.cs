@@ -47,7 +47,7 @@ namespace BuenAireSvc.Controllers
                 var locations = from sensor in array
                              where Convert.ToDouble(sensor["Lat"]) >= latSw && Convert.ToDouble(sensor["Lon"]) >= lonSw
                                     && Convert.ToDouble(sensor["Lat"]) <= latNe && Convert.ToDouble(sensor["Lon"]) <= lonNe
-                             select new { Lat = sensor["Lat"], Lon = sensor["Lon"] };
+                             select new { Label = sensor["Label"], Lat = sensor["Lat"], Lon = sensor["Lon"] };
 
                 result = JsonConvert.SerializeObject(locations);
             }
