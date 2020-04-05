@@ -84,6 +84,33 @@ namespace buenaire
 
             map.CameraIdled += async (sender, args) =>
             {
+                if (DateTime.Now.Minute % 5 == 0)
+                {
+                    string allResponse = await client.GetStringAsync("https://uafbuenaire.azurewebsites.net/api/purpleair/all/" + map.Region.NearLeft.Latitude +
+                        "/" + map.Region.NearLeft.Longitude + "/" + map.Region.FarRight.Latitude + "/" + map.Region.FarRight.Longitude);
+
+                    JArray allJson = JArray.Parse(allResponse);
+
+                    foreach (JObject sensor in allJson)
+                    {
+                        string label = sensor.Value<string>("Label");
+                        int pinIndex = -1;
+                        for (int i = 0; i < map.Pins.Count; ++i)
+                        {
+                            if (map.Pins[i].Label == label)
+                            {
+                                pinIndex = i;
+                                break;
+                            }
+                        }
+
+                        if (pinIndex > 0)
+                        {
+                            map.Pins[pinIndex].Label = label + " PM 2.5: " + sensor.Value<string>("PM2_5Value") + "ug/m^3";
+                        }
+                    }
+                }
+                
                 string response = await client.GetStringAsync("https://uafbuenaire.azurewebsites.net/api/purpleair/locations/" + map.Region.NearLeft.Latitude +
                     "/" + map.Region.NearLeft.Longitude + "/" + map.Region.FarRight.Latitude + "/" + map.Region.FarRight.Longitude);
 
@@ -91,19 +118,16 @@ namespace buenaire
 
                 foreach (JObject sensor in json)
                 {
-                    if (!sensor.ContainsKey("ParentID"))
+                    double lat = sensor.Value<double>("Lat");
+                    double lon = sensor.Value<double>("Lon");
+                    Pin pin = new Pin() { Position = new Position(lat, lon), Label = sensor.Value<string>("Label") };
+                    if (!map.Pins.Contains(pin))
                     {
-                        double lat = sensor.Value<double>("Lat");
-                        double lon = sensor.Value<double>("Lon");
-                        Pin pin = new Pin() { Position = new Position(lat, lon), Label = sensor.Value<string>("Label")};
-                        if (!map.Pins.Contains(pin))
-                        {
-                            map.Pins.Add(pin);
-                        }
+                        map.Pins.Add(pin);
                     }
                 }
             };
-            
+
             Content = map;
         }
     }
