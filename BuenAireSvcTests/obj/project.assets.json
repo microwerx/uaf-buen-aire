@@ -9250,11 +9250,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mark\\Source\\Repos\\uaf-buen-aire\\BuenAireSvcTests\\BuenAireSvcTests.csproj",
+      "projectUniqueName": "C:\\Users\\Mark\\Source\\Repos\\uaf-buen-aire-server\\BuenAireSvcTests\\BuenAireSvcTests.csproj",
       "projectName": "BuenAireSvcTests",
-      "projectPath": "C:\\Users\\Mark\\Source\\Repos\\uaf-buen-aire\\BuenAireSvcTests\\BuenAireSvcTests.csproj",
+      "projectPath": "C:\\Users\\Mark\\Source\\Repos\\uaf-buen-aire-server\\BuenAireSvcTests\\BuenAireSvcTests.csproj",
       "packagesPath": "C:\\Users\\Mark\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mark\\Source\\Repos\\uaf-buen-aire\\BuenAireSvcTests\\obj\\",
+      "outputPath": "C:\\Users\\Mark\\Source\\Repos\\uaf-buen-aire-server\\BuenAireSvcTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -9274,8 +9274,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\Mark\\Source\\Repos\\uaf-buen-aire\\BuenAireSvc\\BuenAireSvc.csproj": {
-              "projectPath": "C:\\Users\\Mark\\Source\\Repos\\uaf-buen-aire\\BuenAireSvc\\BuenAireSvc.csproj"
+            "C:\\Users\\Mark\\Source\\Repos\\uaf-buen-aire-server\\BuenAireSvc\\BuenAireSvc.csproj": {
+              "projectPath": "C:\\Users\\Mark\\Source\\Repos\\uaf-buen-aire-server\\BuenAireSvc\\BuenAireSvc.csproj"
             }
           }
         }
