@@ -15,7 +15,7 @@ namespace BuenAireSvc.Controllers
         [HttpGet("{zoom}/{x}/{y}")]
         public ActionResult<FileStream> Get(uint zoom, int x, int y)
         {
-            string physicalPath = Server.MapPath($"~/servicedata/MLMOutput/aqlatestL{zoom}T{x.ToString("D2")}{y.ToString("D2")}.png");
+            string physicalPath = $"Data/MLMOutput/aqlatestL{zoom}T{x.ToString("D2")}{y.ToString("D2")}.png";
             FileStream stream = System.IO.File.OpenRead(physicalPath);
             MemoryStream ms = new MemoryStream();
             stream.CopyTo(ms);
