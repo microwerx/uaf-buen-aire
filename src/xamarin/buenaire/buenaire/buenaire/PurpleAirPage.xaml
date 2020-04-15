@@ -6,13 +6,5 @@
              mc:Ignorable="d"
              x:Class="buenaire.PurpleAirPage"
              Title="Purple Air">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Purple Air Map Here"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"
-                FontAttributes="Bold"
-                FontSize="Large"/>
-        </StackLayout>
-    </ContentPage.Content>
+    <ContentPage.Content/>
 </ContentPage>

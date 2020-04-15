@@ -51,7 +51,7 @@ namespace buenaire
 
             SearchBar placesBar = new SearchBar
             { 
-                Placeholder = "Search a location...",
+                Placeholder = "Search for a location...",
                 TextColor = Color.Black,
                 PlaceholderColor = Color.Black,
                 CancelButtonColor = Color.Black,
