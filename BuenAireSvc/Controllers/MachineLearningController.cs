@@ -15,13 +15,13 @@ namespace BuenAireSvc.Controllers
         [HttpGet("{zoom}/{x}/{y}")]
         public ActionResult<FileStream> Get(uint zoom, int x, int y)
         {
-            FileStream stream = System.IO.File.OpenRead($"/Data/MLMOutput/aqlatestL{zoom}T{x.ToString("D2")}{y.ToString("D2")}.png");
+            FileStream stream = System.IO.File.OpenRead($"Data/MLMOutput/aqlatestL{zoom}T{x.ToString("D2")}{y.ToString("D2")}.png");
             MemoryStream ms = new MemoryStream();
             stream.CopyTo(ms);
             HttpResponseMessage response = new HttpResponseMessage(System.Net.HttpStatusCode.OK);
             response.Content = new StreamContent(ms);
             response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/png");
-            return System.IO.File.OpenRead($"/Data/MLMOutput/aqlatestL{zoom}T{x.ToString("D2")}{y.ToString("D2")}.png");
+            return System.IO.File.OpenRead($"Data/MLMOutput/aqlatestL{zoom}T{x.ToString("D2")}{y.ToString("D2")}.png");
         }
     }
 }
