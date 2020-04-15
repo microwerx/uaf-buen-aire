@@ -121,8 +121,6 @@ namespace buenaire
                 FontAttributes = FontAttributes.Italic,
             };
 
-            
-
             grid.Children.Add(map, 0, 1, 0, 2);
             grid.Children.Add(placesBar, 0, 0);
 

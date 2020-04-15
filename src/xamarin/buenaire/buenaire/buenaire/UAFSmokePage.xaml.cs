@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Xamarin.Forms.Maps;
+using Xamarin.Forms.GoogleMaps;
 
 namespace buenaire
 {
@@ -17,69 +17,57 @@ namespace buenaire
         {
             InitializeComponent();
 
-            Map map = new Map(MapSpan.FromCenterAndRadius(new Position(64.83, -147.71), Distance.FromMiles(10)));
+            Map map = new Map();
 
-            Polygon polygon1 = new Polygon()
+            map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(64.83d, -147.71d), Distance.FromMeters(10000)), false);
+
+            Pin pin1 = new Pin()
             {
-                StrokeWidth = 25,
-                StrokeColor = Color.FromHex("#1BA1E2"),
-                FillColor = Color.FromHex("#881BA1E2"),
-                Geopath =
-                    {
-                        new Position(64.80, -147.71),
-                        new Position(64.78, -147.69),
-                        new Position(64.76, -147.71),
-                        new Position(64.78, -147.73)
-                    }
+                Position = new Position(64.83, -147.73),
+                Label = "Fairbanks!",
+                Icon = BitmapDescriptorFactory.DefaultMarker(Color.FromRgba(0, 177, 106, 1))
             };
+            map.Pins.Add(pin1);
 
-            Polygon polygon2 = new Polygon()
+            Pin pin2 = new Pin()
             {
-                StrokeWidth = 25,
-                StrokeColor = Color.DarkRed,
-                FillColor = Color.Red,
-                Geopath =
-                    {
-                        new Position(64.90, -147.71),
-                        new Position(64.88, -147.69),
-                        new Position(64.86, -147.71),
-                        new Position(64.88, -147.73)
-                    }
+                Position = new Position(64.83, -147.72),
+                Label = "Fairbanks!",
+                Icon = BitmapDescriptorFactory.DefaultMarker(Color.FromRgba(240, 255, 0, 1))
             };
+            map.Pins.Add(pin2);
 
-            Polygon polygon3 = new Polygon()
+            Pin pin3 = new Pin()
             {
-                StrokeWidth = 25,
-                StrokeColor = Color.DarkOrange,
-                FillColor = Color.Orange,
-                Geopath =
-                     {
-                         new Position(64.85, -147.76),
-                         new Position(64.83, -147.74),
-                         new Position(64.81, -147.76),
-                         new Position(64.83, -147.78)
-                     }
+                Position = new Position(64.83, -147.71),
+                Label = "Fairbanks!",
+                Icon = BitmapDescriptorFactory.DefaultMarker(Color.FromRgba(248, 148, 6, 1))
             };
+            map.Pins.Add(pin3);
 
-            Polygon polygon4 = new Polygon()
+            Pin pin4 = new Pin()
             {
-                StrokeWidth = 25,
-                StrokeColor = Color.Yellow,
-                FillColor = Color.LightYellow,
-                Geopath =
-                    {
-                        new Position(64.85, -147.66),
-                        new Position(64.83, -147.64),
-                        new Position(64.81, -147.66),
-                        new Position(64.83, -147.68)
-                    }
+                Position = new Position(64.83, -147.70),
+                Label = "Fairbanks!",
+                Icon = BitmapDescriptorFactory.DefaultMarker(Color.FromRgba(207, 0, 15, 1))
             };
+            map.Pins.Add(pin4);
 
-            // add the polygon to the map's MapElements collection
-            map.MapElements.Add(polygon1);
-            map.MapElements.Add(polygon2);
-            map.MapElements.Add(polygon3);
-            map.MapElements.Add(polygon4);
+            Pin pin5 = new Pin()
+            {
+                Position = new Position(64.83, -147.69),
+                Label = "Fairbanks!",
+                Icon = BitmapDescriptorFactory.DefaultMarker(Color.Purple)
+            };
+            map.Pins.Add(pin5);
+
+            Pin pin6 = new Pin()
+            {
+                Position = new Position(64.83, -147.68),
+                Label = "Fairbanks!",
+                Icon = BitmapDescriptorFactory.DefaultMarker(Color.White)
+            };
+            map.Pins.Add(pin6);
 
             Content = map;
         }
