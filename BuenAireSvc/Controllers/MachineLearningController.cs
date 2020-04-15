@@ -15,7 +15,7 @@ namespace BuenAireSvc.Controllers
         [HttpGet("{zoom}/{x}/{y}")]
         public ActionResult<FileStream> Get(uint zoom, int x, int y)
         {
-            FileStream stream = System.IO.File.OpenRead($"servicedata/MLMOutput/aqlatestL{zoom}T{x.ToString("D2")}{y.ToString("D2")}.png");
+            FileStream stream = System.IO.File.OpenRead($"/servicedata/MLMOutput/aqlatestL{zoom}T{x.ToString("D2")}{y.ToString("D2")}.png");
             MemoryStream ms = new MemoryStream();
             stream.CopyTo(ms);
             HttpResponseMessage response = new HttpResponseMessage(System.Net.HttpStatusCode.OK);
