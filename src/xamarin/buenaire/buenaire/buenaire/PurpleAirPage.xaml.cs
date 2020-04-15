@@ -9,6 +9,7 @@ using Xamarin.Forms.Xaml;
 using Xamarin.Forms.GoogleMaps;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
+using GoogleApi;
 
 namespace buenaire
 {
@@ -19,11 +20,14 @@ namespace buenaire
 
         public PurpleAirPage()
         {
+            Grid grid = new Grid();
+            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50) });
+            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+
             Map map = new Map();
 
             map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(64.83d, -147.71d), Distance.FromMeters(10000)), false);
-
-
 
             var circle1 = new Circle();
             circle1.Center = new Position(64.87d, -147.62d);
@@ -104,7 +108,25 @@ namespace buenaire
                 }
             };
 
-            Content = map;
+            SearchBar placesBar = new SearchBar
+            { 
+                Placeholder = "Search a location...",
+                TextColor = Color.Black,
+                PlaceholderColor = Color.Black,
+                CancelButtonColor = Color.Black,
+                BackgroundColor = Color.WhiteSmoke,
+                HorizontalTextAlignment = TextAlignment.Center,
+                VerticalTextAlignment = TextAlignment.Center,
+                FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(SearchBar)),
+                FontAttributes = FontAttributes.Italic,
+            };
+
+            
+
+            grid.Children.Add(map, 0, 1, 0, 2);
+            grid.Children.Add(placesBar, 0, 0);
+
+            Content = grid;
         }
 
         private void refreshSensorData(Map map, JObject sensor)
