@@ -83,7 +83,7 @@ namespace buenaire
 
             if (pinIndex >= 0)
             {
-                map.Pins[pinIndex].Label = label + " (PM 2.5: " + sensor.Value<string>("PM2_5") + "ug/m^3)";
+                map.Pins[pinIndex].Address = " (PM 2.5: " + sensor.Value<string>("PM2_5") + " ug/m^3)";
             }
         }
 
@@ -91,12 +91,49 @@ namespace buenaire
         {
             double lat = sensor.Value<double>("Lat");
             double lon = sensor.Value<double>("Lon");
-            Pin pin = new Pin() { Position = new Position(lat, lon), Label = sensor.Value<string>("Label") };
+            Pin pin = new Pin()
+            {
+                Position = new Position(lat, lon),
+                Label = sensor.Value<string>("Label"),
+                Icon = chooseIcon(sensor.Value<double>("PM2_5"))
+            };
+            
             if (!map.Pins.Contains(pin))
             {
                 map.Pins.Add(pin);
                 refreshSensorData(map, sensor);
             }
+        }
+
+        private BitmapDescriptor chooseIcon(double pm2_5)
+        {
+            BitmapDescriptor descriptor;
+            if (pm2_5 < 12)
+            {
+                descriptor = BitmapDescriptorFactory.FromBundle("Fifty.png");
+            }
+            else if (pm2_5 < 35)
+            {
+                descriptor = BitmapDescriptorFactory.FromBundle("OneHundred.png");
+            }
+            else if (pm2_5 < 55)
+            {
+                descriptor = BitmapDescriptorFactory.FromBundle("OneFifty.png");
+            }
+            else if (pm2_5 < 150)
+            {
+                descriptor = BitmapDescriptorFactory.FromBundle("TwoHundred.png");
+            }
+            else if (pm2_5 < 250)
+            {
+                descriptor = BitmapDescriptorFactory.FromBundle("ThreeHundred.png");
+            }
+            else
+            {
+                descriptor = BitmapDescriptorFactory.DefaultMarker(Color.Red);
+            }
+
+            return descriptor;
         }
     }
 }
