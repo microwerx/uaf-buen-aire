@@ -153,6 +153,10 @@
             "Quartz": {
               "target": "Package",
               "version": "[3.0.7, )"
+            },
+            "SkiaSharp": {
+              "target": "Package",
+              "version": "[1.68.1.1, )"
             }
           },
           "imports": [
