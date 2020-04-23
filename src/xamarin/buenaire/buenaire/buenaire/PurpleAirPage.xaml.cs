@@ -97,7 +97,8 @@ namespace buenaire
                 Label = sensor.Value<string>("Label"),
                 Icon = chooseIcon(sensor.Value<double>("PM2_5"))
             };
-            
+            pin.ZIndex = Convert.ToInt32(sensor.Value<double>("PM2_5"));
+
             if (!map.Pins.Contains(pin))
             {
                 map.Pins.Add(pin);
