@@ -15,7 +15,7 @@ namespace BuenAireSvc.Controllers
         [HttpGet("{zoom}/{x}/{y}")]
         public ActionResult<FileStream> Get(uint zoom, int x, int y)
         {
-            string physicalPath = $"Data/UAFSmoke/smokeL{zoom}T{x.ToString("D2")}{y.ToString("D2")}.png";
+            string physicalPath = $"Data/UAFSmoke/aqlatestL{zoom}T{x.ToString("D2")}{y.ToString("D2")}.png";
             return System.IO.File.OpenRead(physicalPath);
         }
     }
