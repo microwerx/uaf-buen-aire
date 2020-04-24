@@ -47,7 +47,7 @@ namespace BuenAireSvc
             }
         }
        
-        public static void sliceTiles(FileStream image, string writeMode)        
+        public static void sliceTiles(FileStream image, string writePath)        
         {
             SKImage sKImage = SKImage.FromEncodedData(image);
             if (sKImage.Height != sKImage.Width)
@@ -75,18 +75,10 @@ namespace BuenAireSvc
                 for (int y = 0; y < sKImage.Height; y += 256)
                 {
                     SKImage tile = sKImage.Subset(SKRectI.Create(x, y, x + 256, y + 256));
-                    if (writeMode == "mlm")
-                    {
-                        var stream = File.OpenWrite($"Data/MLMOutput/aqlatestL0T{(x/256).ToString("D2")}{(y/256).ToString("D2")}.png");
-                        var data = tile.Encode();
-                        data.SaveTo(stream);
-                    }
-                    else if (writeMode == "uafsmoke")
-                    {
-                        var stream = File.OpenWrite($"Data/UAFSmoke/aqlatestL{level}T{(x / 256).ToString("D2")}{(y / 256).ToString("D2")}.png");
-                        var data = tile.Encode();
-                        data.SaveTo(stream);
-                    }
+
+                    var stream = File.OpenWrite($"{writePath}/aqlatestL{level}T{(x/256).ToString("D2")}{(y/256).ToString("D2")}.png");
+                    var data = tile.Encode();
+                    data.SaveTo(stream);
                 }
             }
         }

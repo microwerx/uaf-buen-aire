@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="Data\Feeds\" />
+    <Folder Include="Data\TestOutput\" />
     <Folder Include="Data\UAFSmoke\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
