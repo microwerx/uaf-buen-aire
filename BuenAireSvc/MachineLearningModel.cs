@@ -23,12 +23,10 @@ namespace BuenAireSvc
 
         public void OutputImages()
         {
-
-        }
-
-        public bool dataStored()
-        {
-            return ThingSpeak.Count > 0;
+            //Uncomment this when this function is implemented,
+            //so that the freshly made images are immediately
+            //merged into map tiles
+            //ImageStitcher.mergeTiles("Data/MLMOutput");
         }
     }
 }
