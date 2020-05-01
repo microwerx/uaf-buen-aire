@@ -67,6 +67,11 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewController.cs" />
+    <Compile Include="ViewController.designer.cs">
+      <DependentUpon>ViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CashingImageFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -112,6 +117,8 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Splash.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Splash.imageset\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -127,12 +134,24 @@
     <PackageReference Include="Xamarin.Forms.Maps">
       <Version>4.4.0.991640</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.Google.iOS.Maps">
+      <Version>3.7.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Components">
+      <Version>3.1.3</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\buenaire\buenaire.csproj">
-      <Project>{9338D282-0B5F-4875-9C67-A9FC04BC3462}</Project>
+      <Project>{77D75AA3-7FE7-4514-AB3B-F0C66CBE1A6D}</Project>
       <Name>buenaire</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\Splash.imageset\" />
+    <Folder Include="Assets.xcassets\Splash.imageset\" />
+    <Folder Include="Assets.xcassets\Splash.imageset\" />
+    <Folder Include="Assets.xcassets\Splash.imageset\" />
   </ItemGroup>
 </Project>
