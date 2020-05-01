@@ -4,6 +4,8 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using Google.Maps;
+using Xamarin.Forms.GoogleMaps.iOS;
 
 namespace buenaire.iOS
 {
@@ -13,6 +15,8 @@ namespace buenaire.iOS
     [Register("AppDelegate")]
     public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
     {
+        private static string MapsApiKey = "AIzaSyCLQOnTc977Zc-LdmLtWE4ToIraVY1pQRk";
+
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
         // method you should instantiate the window, load the UI into it and then make the window
@@ -22,7 +26,15 @@ namespace buenaire.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            MapServices.ProvideApiKey(MapsApiKey);
             global::Xamarin.Forms.Forms.Init();
+            // Override default ImageFactory by your implementation. 
+            var platformConfig = new PlatformConfig
+            {
+                ImageFactory = new CachingImageFactory()
+            };
+
+            Xamarin.FormsGoogleMaps.Init(MapsApiKey, platformConfig);
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
