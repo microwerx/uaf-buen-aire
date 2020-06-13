@@ -1,2 +1,2 @@
 @echo on
-docker build -t buen-aire-docker .
+docker build -t buen-aire-docker:latest .
