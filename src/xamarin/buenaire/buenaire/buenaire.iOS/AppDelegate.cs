@@ -15,7 +15,7 @@ namespace buenaire.iOS
     [Register("AppDelegate")]
     public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
     {
-        private static string MapsApiKey = "";
+        private static string MapsApiKey = "AIzaSyBnJ9ZnIRip_1pLSRzp8GggOPd0X6wA_fY";
 
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
