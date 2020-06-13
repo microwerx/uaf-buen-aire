@@ -1,0 +1,19 @@
+FROM microsoft/aspnetcore-build:2.1.300-preview1
+
+RUN mkdir /BuenAireSvcTests
+WORKDIR /BuenAireSvcTests
+COPY BuenAireSvcTests/*.csproj .
+
+RUN mkdir /BuenAireSvc
+WORKDIR /BuenAireSvc
+COPY BuenAireSvc/*.csproj .
+
+RUN dotnet restore
+
+
+COPY BuenAireSvcTests/. /BuenAireSvcTests
+COPY BuenAireSvc/. /BuenAireSvc
+
+RUN dotnet publish --output /out/ --configuration Release
+
+# WORKDIR /app
