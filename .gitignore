@@ -385,3 +385,14 @@ MigrationBackup/
 *.out
 *.app
 /BuenAireSvcTests/Controllers/PurpleAirControllerTests.cs
+
+*.csprojAssemblyReference.cache
+
+### Python Files
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+.DS_Store
+
