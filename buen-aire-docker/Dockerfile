@@ -13,30 +13,33 @@ RUN echo 'export PATH=~/.local/bin:$PATH' >> $HOME/.bashrc
 
 RUN apt-get update
 RUN apt-get upgrade -y
-RUN apt-get install -y nano vim-tiny emacs-nox tmux wget curl
+RUN apt-get install -y nano vim-tiny tilde tmux wget curl git
+RUN apt-get install --no-install-recommends -y -q \
+    python3 \
+    python3-dev \
+    python3-setuptools \
+    python3-zmq
 
-# FROM tensorflow/tensorflow:latest-gpu-jupyter
 
 RUN /usr/bin/python3 -m pip install --upgrade pip
+
+RUN pip install -q matplotlib
 RUN pip install -q tensorflow-hub
 RUN pip install -q tfds-nightly
 RUN pip install -q seaborn
 RUN pip install -q git+https://github.com/tensorflow/docs
 RUN pip install -q pyyaml h5py
-RUN pip install -q -U keras-tuner
-
-# FROM pytorch/pytorch:latest
+RUN pip install -q keras-tuner
+RUN pip install -q torch
+RUN pip install -q scikit-image
 
 # RUN pip install
 
-EXPOSE 8080
 EXPOSE 8888
-EXPOSE 6006
-EXPOSE 5000
-EXPOSE 5001
 
-VOLUME ./notebooks /notebooks
+RUN mkdir /tensorflow_datasets
+RUN chown 1000:1000 /tensorflow_datasets
+RUN chown 1000:1000 /tf
 
 WORKDIR /tf
-COPY notebooks/purpleair.ipynb purpleair.ipynb
-COPY notebooks/test.txt test.txt
+COPY notebooks/siggraph2020 siggraph2020

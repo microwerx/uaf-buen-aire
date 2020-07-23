@@ -4,5 +4,5 @@ services:
         ports:
         - "8888:8888"
         volumes:
-        - Z:/github/uaf-buen-aire-master/buen-aire-docker-notebooks
+        - notebooks
     build .
